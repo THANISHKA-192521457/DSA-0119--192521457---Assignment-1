@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class SmartCard {
+private:
+    long long balance;
+public:
+    SmartCard(long long b) {
+        balance = b;
+    }
+    long long getBalance() {
+        return balance;
+    }
+    void recharge(long long amount) {
+        if (amount > 0) {
+            balance += amount;
+        }
+    }
+    bool deductFare(long long fare) {
+        if (balance - fare >= 5000) {
+            balance -= fare;
+            return true;
+        }
+        return false;
+    }
+};
+class Passenger {
+private:
+    string name;
+    string category;
+    SmartCard card;
+public:
+    Passenger(string n, string c, long long balance)
+        : name(n), category(c), card(balance) {}
+    void travel(string zone, long long fare) {
+        cout << "Passenger Name: " << name << endl;
+        cout << "Passenger Category: " << category << endl;
+        cout << "Travel Zone: " << zone << endl;
+        cout << "Journey Fare: Rs " << fare / 100.0 << endl;
+        if (card.deductFare(fare)) {
+            cout << "Journey Status: Successful" << endl;
+        } else {
+            cout << "Journey Status: Failed - Insufficient Balance" << endl;
+        }
+        cout << "Remaining Balance: Rs "
+             << card.getBalance() / 100.0 << endl;
+    }
+};
+int main() {
+    Passenger p("Thanishka", "Student", 10000);
+    p.travel("Inner", 1000);
+
+    return 0;
+}
+```
