@@ -1,0 +1,25 @@
+#include <iostream>
+#include <iomanip>
+#include <limits>
+using namespace std;
+int main() {
+    int hour;
+    long long balance;
+    cout << "Enter hour: ";
+    while (!(cin >> hour) || hour < 0 || hour > 23) {
+        cout << "Invalid hour. Enter again: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+    cout << "Enter card balance in paise: ";
+    while (!(cin >> balance) || balance < 0) {
+        cout << "Invalid balance. Enter again: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+    cout << fixed << setprecision(2);
+    cout << "\nMetro Journey Report\n";
+    cout << "Hour: " << hour << endl;
+    cout << "Balance: Rs " << balance / 100.0 << endl;
+    return 0;
+}
