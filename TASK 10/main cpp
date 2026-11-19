@@ -1,0 +1,23 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main() {
+    long long journeys[] = {
+        20000, 500000, 3000000
+    };
+    long long farePaise = 3000;
+    cout << fixed << setprecision(2);
+    for (long long n : journeys) {
+        long long totalPaise = n * farePaise;
+        double totalDouble = n * 30.0;
+        int totalInt = static_cast<int>(totalPaise);
+        cout << "\nJourneys: " << n << endl;
+        cout << "Integer paise total: "
+             << totalPaise << endl;
+        cout << "Double rupees total: Rs "
+             << totalDouble << endl;
+        cout << "Integer total: "
+             << totalInt << endl;
+    }
+    return 0;
+}
